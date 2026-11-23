@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(npx create-expo-app*)",
+      "Bash(npx expo install *)",
+      "Bash(npx expo export *)",
+      "Bash(npx expo prebuild *)",
+      "Bash(npx expo lint*)",
+      "Bash(npx expo-doctor*)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(npm ci)",
+      "Bash(npm install)",
+      "Bash(npm test*)",
+      "Bash(CI=1 npm test*)",
+      "Bash(npm run *)",
+      "Bash(git status)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git add *)",
+      "Bash(git rm *)",
+      "Bash(git commit *)",
+      "Bash(git push*)",
+      "Bash(eas build *)",
+      "Bash(eas whoami)",
+      "Bash(npx eas-cli build *)",
+      "Bash(npx eas-cli whoami)"
+    ],
+    "deny": [
+      "Read(./.env*)",
+      "Read(**/.env*)",
+      "Read(**/*.keystore)",
+      "Read(**/*.jks)",
+      "Read(./credentials.json)",
+      "Read(./google-services.json)",
+      "Bash(sudo *)",
+      "Bash(git push --force*)",
+      "Bash(git push -f *)",
+      "Bash(git push * --force*)",
+      "Bash(git push * -f*)",
+      "Bash(git remote *)",
+      "Bash(git reset --hard*)",
+      "Bash(rm -rf *)",
+      "Bash(npm install -g *)",
+      "Bash(npm i -g *)",
+      "Bash(npx eas-cli credentials*)"
+    ]
+  }
+}

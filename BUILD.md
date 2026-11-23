@@ -1,4 +1,3 @@
-cat << 'EOF' > ~/Projects/countdown-lockscreen/BUILD.md
 # BUILD: Autonomous Execution of Countdown Lock Screen App
 
 Read `CLAUDE.md`, `docs/SPEC.md`, `docs/DESIGN.md`, `docs/ARCHITECTURE.md`, `docs/DECISIONS.md`, and `docs/TASKS.md` before writing any code.
@@ -29,4 +28,4 @@ Implement `docs/TASKS.md` from Phase 1 through Phase 8 completely autonomously i
      3. Full contents/summary of `docs/BLOCKERS.md` with exact copy-paste commands to resolve any blocked item (especially EAS keystore/build if blocked).
      4. Any ADRs added to `docs/DECISIONS.md` during implementation.
    - Commit and push `docs/HANDOFF.md` as the final commit.
-EOF
+

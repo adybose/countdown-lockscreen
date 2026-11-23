@@ -104,6 +104,7 @@ Full map with every file: `docs/ARCHITECTURE.md` §2.
 
 **Git**
 - Conventional Commits with task ID scope: `feat(T2.2): add backward planner`, `test(T2.1): …`, `fix(T4.4): …`, `docs: …`, `chore(T1.2): …`.
+- **Never add a `Co-Authored-By: Claude …` trailer or any other Claude/AI attribution to commit messages.**
 - One task = at least one commit. Never commit `android/`, `ios/`, `.scaffold/`, `dist/`, `.env*`, keystores.
 
 ## Unattended Operation Rules
