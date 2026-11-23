@@ -76,7 +76,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     CI=1 npm test && npx expo install --check && npm run lint
     ```
 
-- [ ] **T1.3 — Bundle fonts locally + font map** · `MUST-HAVE` · 8 min · deps: T1.2
+- [x] **T1.3 — Bundle fonts locally + font map** · `MUST-HAVE` · 8 min · deps: T1.2
   - `npx expo install @expo-google-fonts/inter @expo-google-fonts/jetbrains-mono @expo-google-fonts/press-start-2p @expo-google-fonts/vt323 @expo-google-fonts/fredoka @expo-google-fonts/playfair-display @expo-google-fonts/lora @expo-google-fonts/caveat`
   - Copy exactly the 12 files listed in DESIGN §7 into `assets/fonts/` (find them with `find node_modules/@expo-google-fonts -name '<Key>.ttf'`). Add `assets/fonts/LICENSES/README.md` listing each family as SIL OFL 1.1 (copy license files if the packages ship them).
   - Uninstall the `@expo-google-fonts/*` packages (`npm uninstall …`) so the app depends only on local files.
