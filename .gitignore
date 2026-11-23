@@ -1,0 +1,10 @@
+node_modules/
+.expo/
+dist/
+web-build/
+.env*
+*.keystore
+*.jks
+credentials.json
+google-services.json
+.DS_Store
