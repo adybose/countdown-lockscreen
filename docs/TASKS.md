@@ -109,7 +109,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     CI=1 npm test -- __tests__/store
     ```
 
-- [ ] **T1.6 — `bootstrap.sh` + phase gate** · `SHOULD-HAVE` · 3 min · deps: T1.5
+- [x] **T1.6 — `bootstrap.sh` + phase gate** · `SHOULD-HAVE` · 3 min · deps: T1.5
   - Root `bootstrap.sh` (bash, `set -euo pipefail`): check Node ≥ 20, `npm ci`, `npx expo install --check || true`, `npx tsc --noEmit`, `CI=1 npm test`, then print the next steps from `docs/SETUP.md`. `chmod +x`. **Don't run it here** (it would reinstall); syntax-check only.
   - Acceptance:
     ```bash
