@@ -32,7 +32,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
 
 ## Phase 0 — Docs review (human gate)
 
-- [ ] **T0.1 — Human approves the docs** · `MUST-HAVE` · 0 min (human) · deps: —
+- [x] **T0.1 — Human approves the docs** · `MUST-HAVE` · 0 min (human) · deps: —
   - Read `SPEC.md`, `DESIGN.md`, `ARCHITECTURE.md`, `DECISIONS.md`, and this file. Edit anything you disagree with.
   - **Approval signal:** starting the `BUILD.md` session counts as approval. The agent marks T0.1 `[x]` as its first action if it's still unchecked.
   - Acceptance: `test -f docs/SPEC.md && test -f docs/DESIGN.md && test -f docs/ARCHITECTURE.md && test -f docs/TASKS.md`
@@ -47,7 +47,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
 
 ## Phase 1 — Scaffold, TypeScript, fonts, tokens, data layer (43 min)
 
-- [ ] **T1.1 — Scaffold Expo + Expo Router app without clobbering docs** · `MUST-HAVE` · 10 min · deps: T0.1
+- [x] **T1.1 — Scaffold Expo + Expo Router app without clobbering docs** · `MUST-HAVE` · 10 min · deps: T0.1
   - `npx create-expo-app@latest .scaffold --template default --yes --no-install` (resolves the latest stable SDK. Don't pin.)
   - Copy into the repo root **only**: `package.json`, `tsconfig.json`, `app.json`, `expo-env.d.ts` (if present), `eslint.config.js` (if present), `assets/images/*`. **Don't copy** the template's `app/`, `components/`, `hooks/`, `constants/`, `scripts/`, `README.md`. Don't overwrite `docs/`, `CLAUDE.md`, `.claude/`, `KICKOFF.md`, `BUILD.md`, `.gitignore`.
   - `package.json`: `name: "countdown-lockscreen"`; remove the `reset-project` script; keep `main: "expo-router/entry"`.
