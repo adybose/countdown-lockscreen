@@ -37,7 +37,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
   - **Approval signal:** starting the `BUILD.md` session counts as approval. The agent marks T0.1 `[x]` as its first action if it's still unchecked.
   - Acceptance: `test -f docs/SPEC.md && test -f docs/DESIGN.md && test -f docs/ARCHITECTURE.md && test -f docs/TASKS.md`
 
-- [ ] **T0.2 — Human prerequisites (optional but recommended)** · `SHOULD-HAVE` · 0 min (human) · deps: —
+- [x] **T0.2 — Human prerequisites (optional but recommended)** · `SHOULD-HAVE` · 0 min (human) · deps: —
   - Confirm `.claude/settings.json` exists with the project permission rules.
   - Confirm `git push origin main` works non-interactively (SSH agent loaded).
   - Optional, for T6.3: `npx eas-cli login` then `npx eas-cli whoami`.
@@ -63,7 +63,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     npx tsc --noEmit && npx expo export --platform android
     ```
 
-- [ ] **T1.2 — Install core dependencies, Jest, scripts** · `MUST-HAVE` · 8 min · deps: T1.1
+- [x] **T1.2 — Install core dependencies, Jest, scripts** · `MUST-HAVE` · 8 min · deps: T1.1
   - Runtime (one command, versions resolved by Expo):
     `npx expo install zustand @react-native-async-storage/async-storage date-fns react-native-svg lucide-react-native react-native-view-shot expo-media-library expo-notifications expo-sharing expo-file-system expo-document-picker expo-font expo-splash-screen expo-constants expo-linking @react-native-community/datetimepicker`
   - Dev: `npx expo install jest-expo jest @types/jest @testing-library/react-native -- --save-dev`

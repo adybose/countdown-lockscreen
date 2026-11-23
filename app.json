@@ -34,7 +34,27 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
-      ]
+      ],
+      "expo-font",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/android-icon-monochrome.png",
+          "color": "#3DFFC5",
+          "defaultChannel": "reminders"
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow Countdown Lock Screen to save wallpapers to your photos.",
+          "savePhotosPermission": "Allow Countdown Lock Screen to save wallpapers to your photos.",
+          "isAccessMediaLocationEnabled": false,
+        "granularPermissions": ["photo"]
+        }
+      ],
+      "expo-sharing",
+      "@react-native-community/datetimepicker"
     ],
     "experiments": {
       "typedRoutes": false,
