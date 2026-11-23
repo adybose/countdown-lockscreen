@@ -121,7 +121,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
 
 ## Phase 2 — Planning engine, date utilities, tests, onboarding (42 min)
 
-- [ ] **T2.1 — Date & T-minus utilities + timezone tests** · `MUST-HAVE` · 10 min · deps: T1.5
+- [x] **T2.1 — Date & T-minus utilities + timezone tests** · `MUST-HAVE` · 10 min · deps: T1.5
   - `src/utils/dates.ts` per ARCHITECTURE §4 (`parseLocalDate`, `toLocalDateString`, `deadlineInstant`, `daysLeft`, `getCountdownParts`, `getCountdownStatus`, `tMinus`, `formatTMinusLabel`, `formatDeadline`).
   - Tests `__tests__/utils/dates.test.ts`: the `YYYY-MM-DD` parse doesn't shift days; end-of-day default; DST start 2027-03-14 and end 2027-11-07 day counts; statuses upcoming/today/overdue/completed (AC-03, AC-10, AC-31, AC-32).
   - Acceptance:
