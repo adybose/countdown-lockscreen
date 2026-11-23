@@ -129,7 +129,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     CI=1 npm test -- dates && npm run test:tz
     ```
 
-- [ ] **T2.2 — Backward planner, validation, progress, icon suggestion** · `MUST-HAVE` · 10 min · deps: T2.1
+- [x] **T2.2 — Backward planner, validation, progress, icon suggestion** · `MUST-HAVE` · 10 min · deps: T2.1
   - `src/utils/{planner,validation,progress,icons,prng}.ts` per ARCHITECTURE §4 + DESIGN §8.1.
   - Tests: `milestoneCountFor` boundaries 13/14/27/28/41/42; all generated dates within `[today, deadline]` and ascending, for D ∈ {0, 1, 2, 7, 30, 120}; validation boundaries (today and deadline accepted); `getNextMilestone` skips done/past; `getProgress` clamps; `suggestIcon('Polish resume') === 'file-text'`; PRNG deterministic (AC-02, AC-04–AC-07, AC-11, AC-12).
   - Acceptance:

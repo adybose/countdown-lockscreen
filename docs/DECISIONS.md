@@ -71,6 +71,28 @@ Format: each ADR has Status · Context · Decision · Consequences. Add new ADRs
 
 ---
 
+## ADR-005: Done milestones may keep past dates during validation
+
+- **Status:** Accepted
+- **Context:** FR-07 says every milestone date must satisfy `today ≤ date ≤ deadlineDate`. In **edit mode** (Home → Edit plan), milestones the user already ticked off usually have dates before today. Applying the rule literally would block **Next** until the user moved completed milestones into the future, which falsifies their history.
+- **Decision:** `validateMilestones` skips the `before-today` check for milestones with `done = true`. All other checks (`after-deadline`, title length, real date) still apply to every milestone. Pending milestones still must be dated today or later.
+- **Consequences:**
+  - ✅ Editing a plan in progress works without rewriting completed milestones.
+  - ⚠️ A small extension of FR-07, limited to completed rows. Covered by `__tests__/utils/validation.test.ts`.
+
+---
+
+## ADR-006: Expo SDK 58 template layout adjustments
+
+- **Status:** Accepted
+- **Context:** `create-expo-app@latest` (SDK 58) now generates routes under `src/app` and maps `@/*` to `./src/*`. Our docs put routes in the root `app/` folder and import as `@/src/...`. TypeScript 6 also no longer auto-includes `@types/*` packages.
+- **Decision:** Keep the documented layout: routes in root `app/` (Expo Router still supports it), `@/*` → `./*` in `tsconfig.json`, and `"types": ["jest", "node"]` added explicitly. `typedRoutes` is disabled to keep `tsc` independent of generated `.expo/types`. Template-only packages (`@expo/ui`, `expo-glass-effect`, `expo-symbols`, `expo-image`, `expo-device`, `expo-web-browser`) were not copied. `web.output` is `static`.
+- **Consequences:**
+  - ✅ Matches CLAUDE.md and ARCHITECTURE §2 exactly.
+  - ⚠️ Route `href`s are plain strings (no typed-route checking).
+
+---
+
 <!-- Template for new ADRs
 ## ADR-00N: <title>
 - **Status:** Proposed | Accepted | Superseded by ADR-00M
