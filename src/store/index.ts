@@ -179,8 +179,7 @@ export const useAppStore = create<Store>()(
         const { draft, countdown } = get();
         if (mode === 'edit') {
           if (!countdown) return;
-          if (draft?.mode === 'edit' && draft.editingId === countdown.id) return;
-          set({ draft: draftFromCountdown(countdown) });
+          set({ draft: draftFromCountdown(countdown) }); // always a fresh copy of the saved plan
           return;
         }
         if (draft?.mode === 'create') return; // resume the persisted wizard (FR-01)

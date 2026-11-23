@@ -137,7 +137,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     CI=1 npm test -- planner validation progress icons prng
     ```
 
-- [ ] **T2.3 — UI kit + onboarding layout + Steps 1–3 (Goal, Deadline, Motivation)** · `MUST-HAVE` · 11 min · deps: T2.2
+- [x] **T2.3 — UI kit + onboarding layout + Steps 1–3 (Goal, Deadline, Motivation)** · `MUST-HAVE` · 11 min · deps: T2.2
   - `src/components/ui/*` (Button, IconButton, TextField with counter, DateField / DateField.web, TimeField / TimeField.web, Toggle, Segmented, Checkbox, ProgressBar, Toast, StepHeader, Banner) using chrome tokens.
   - `app/onboarding/_layout.tsx` (Stack, StepHeader "Step n of 6"; `?mode=edit` → `startDraft('edit')`).
   - `goal.tsx`, `deadline.tsx`, `motivation.tsx` per DESIGN §9.2–9.4. Next is disabled until valid. Inline errors.
