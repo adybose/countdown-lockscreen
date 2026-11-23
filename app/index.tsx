@@ -1,9 +1,7 @@
-import { Text, View } from 'react-native';
+import { Redirect } from 'expo-router';
+import { useAppStore } from '@/src/store';
 
 export default function Index() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Countdown Lock Screen</Text>
-    </View>
-  );
+  const hasCountdown = useAppStore((s) => s.countdown !== null);
+  return <Redirect href={hasCountdown ? '/home' : '/onboarding/goal'} />;
 }

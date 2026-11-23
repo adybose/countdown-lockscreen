@@ -99,7 +99,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     CI=1 npm test -- __tests__/themes
     ```
 
-- [ ] **T1.5 — Zustand store + AsyncStorage persistence + app-ready gate** · `MUST-HAVE` · 7 min · deps: T1.4
+- [x] **T1.5 — Zustand store + AsyncStorage persistence + app-ready gate** · `MUST-HAVE` · 7 min · deps: T1.4
   - `src/store/{index,storage,migrations,selectors}.ts` per ARCHITECTURE §5.1, including draft actions, `toggleMilestone`, `markComplete`, `resetCountdown`, preferences, and reminders (defaults per SPEC AC-09).
   - `src/utils/id.ts`. `src/hooks/useAppReady.ts` (fonts + `hasHydrated`).
   - `app/_layout.tsx`: keep the splash until ready. `app/index.tsx`: redirect to `/home` or `/onboarding/goal` (placeholder route files are OK for now).
