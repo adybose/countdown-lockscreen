@@ -1,0 +1,46 @@
+import type { ThemeTokens } from '@/src/types/theme';
+
+/** DESIGN §6.3 — Sticker Planner. */
+export const stickerPlanner: ThemeTokens = {
+  id: 'sticker-planner',
+  name: 'Sticker Planner',
+  colors: {
+    background: '#FFF1F6',
+    backgroundAlt: '#FFD3E2',
+    surface: '#FFFFFF',
+    surfaceBorder: '#FF8FB3',
+    surfaceShadow: '#F7B3CA',
+    textPrimary: '#4A1530',
+    textSecondary: '#7A3B5A',
+    textMuted: '#9C5C7C',
+    accent: '#FF6FA0',
+    accentAlt: '#FFB86B',
+    success: '#2E9E6A',
+    danger: '#C81E4A',
+    trail: '#FF8FB3',
+    node: '#FF8FB3',
+    nodeActive: '#FF6FA0',
+    nodeDone: '#2E9E6A',
+    badgeBg: '#D6336C',
+    badgeText: '#FFFFFF',
+  },
+  fonts: { display: 'Fredoka_700Bold', body: 'Fredoka_500Medium', hand: 'Caveat_700Bold' },
+  sizes: { title: 7, hero: 26, heroUnit: 5, badge: 3.6, tLabel: 4.0, rowTitle: 3.8, motivation: 5.4, caption: 3.0 },
+  radii: { card: 4, badge: 999, node: 999, checkbox: 1.2 },
+  spacing: { xxs: 0.5, xs: 1, sm: 2, md: 3, lg: 4.5, xl: 6, xxl: 8 },
+  background: {
+    kind: 'grid-paper',
+    gridPitch: 6,
+    gridLine: 0.25,
+    confetti: { sparkle: '#FFB3CC', heart: '#FF8FB3', dot: '#FFB86B' },
+  },
+  pathStyle: 'ribbon-stack',
+  maxRows: { portrait: 5, landscape: 6 },
+  icon: { strokeWidth: 2.25, size: 3.8, color: 'surface', container: 'sticker-circle' },
+  contrastPairs: [
+    { fg: 'textPrimary', bg: 'background', min: 4.5 },
+    { fg: 'textSecondary', bg: 'surface', min: 4.5 },
+    { fg: 'textMuted', bg: 'background', min: 4.5 },
+    { fg: 'badgeText', bg: 'badgeBg', min: 4.5 },
+  ],
+};

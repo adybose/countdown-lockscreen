@@ -89,7 +89,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     ! grep -q "@expo-google-fonts" package.json
     ```
 
-- [ ] **T1.4 — Domain types + 4 theme token sets + contrast check** · `MUST-HAVE` · 7 min · deps: T1.3
+- [x] **T1.4 — Domain types + 4 theme token sets + contrast check** · `MUST-HAVE` · 7 min · deps: T1.3
   - `src/types/{domain,theme,wallpaper}.ts` per ARCHITECTURE §3.
   - `src/themes/tokens/*.ts` with **exact** values from DESIGN §6.1–6.4. `src/themes/index.ts` (`THEMES`, `THEME_ORDER`). `src/themes/chrome.ts` (§6.5). `src/themes/icons.ts` (lucide registry; verify the names exist).
   - `src/utils/contrast.ts` (alpha-aware: composite `#RRGGBBAA` over the declared bg).
