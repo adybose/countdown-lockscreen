@@ -238,7 +238,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
 
 ## Phase 5 — Local notifications (14 min)
 
-- [ ] **T5.1 — Pure notification planner + tests** · `MUST-HAVE` (milestone reminders `SHOULD-HAVE`) · 6 min · deps: T2.2
+- [x] **T5.1 — Pure notification planner + tests** · `MUST-HAVE` (milestone reminders `SHOULD-HAVE`) · 6 min · deps: T2.2
   - `src/utils/notificationPlan.ts` per ARCHITECTURE §9.2.
   - Tests: daily trigger with `data.url = '/studio'`; deadline-day trigger; milestone triggers at `(date − N) @ dailyTime`; past triggers skipped; done milestones skipped; overdue/completed → `[]`; cap 60 (AC-23, AC-24).
   - Acceptance:
