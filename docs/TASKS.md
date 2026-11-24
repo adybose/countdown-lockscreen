@@ -162,7 +162,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
 
 ## Phase 3 — Home + Settings (26 min)
 
-- [ ] **T3.1 — Home screen** · `MUST-HAVE` · 14 min · deps: T2.4
+- [x] **T3.1 — Home screen** · `MUST-HAVE` · 14 min · deps: T2.4
   - `src/hooks/useNow.ts` (minute-aligned interval, paused when the app is backgrounded).
   - `app/home.tsx` + `src/components/home/*` per DESIGN §9.8: live `days : hrs : min`, NextMilestoneCard, DualProgress, interactive Checklist (`accessibilityRole="checkbox"`), **Generate lock screen** (→ `/studio`), **Edit plan** (→ `/onboarding/goal?mode=edit`), settings icon.
   - Empty, overdue, today, and completed states per DESIGN §10 (Mark complete / Set new deadline actions).

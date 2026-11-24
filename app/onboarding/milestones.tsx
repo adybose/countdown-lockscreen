@@ -1,4 +1,5 @@
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useEffect, useRef } from 'react';
 import { Plus, Sparkles } from 'lucide-react-native';
 import { StyleSheet, View } from 'react-native';
 import { MilestoneEditor } from '@/src/components/onboarding/MilestoneEditor';
@@ -24,6 +25,18 @@ export default function MilestonesStep() {
   const now = useNow();
   const draft = useAppStore((s) => s.draft);
   const s = useAppStore.getState();
+  const { autoplan } = useLocalSearchParams<{ autoplan?: string }>();
+  const autoPlanned = useRef(false);
+
+  // Home "Break it down → Auto-plan" deep-links here with ?autoplan=1.
+  useEffect(() => {
+    if (autoplan !== '1' || autoPlanned.current || !draft || draft.milestones.length > 0) return;
+    if (!isLocalDate(draft.deadlineDate)) return;
+    autoPlanned.current = true;
+    const today = toLocalDateString(now);
+    const start = today > draft.deadlineDate ? draft.deadlineDate : today;
+    useAppStore.getState().replaceDraftMilestones(autoPlanBackward({ today: start, deadlineDate: draft.deadlineDate, now }));
+  }, [autoplan, draft, now]);
 
   if (!draft) return null;
   const today = toLocalDateString(now);
