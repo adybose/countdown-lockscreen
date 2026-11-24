@@ -225,7 +225,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     npx expo export --platform android
     ```
 
-- [ ] **T4.5 — iOS guide + live theme previews in onboarding** · `MUST-HAVE` · 4 min · deps: T4.4
+- [x] **T4.5 — iOS guide + live theme previews in onboarding** · `MUST-HAVE` · 4 min · deps: T4.4
   - `app/ios-guide.tsx` (modal) per DESIGN §9.10 with a collapsible Shortcuts section. The Studio shows "How to set as Lock Screen" on iOS and after Save on iOS.
   - Replace the T2.4 swatches with live mini `<Wallpaper>` previews built from the draft (AC-08).
   - Acceptance:

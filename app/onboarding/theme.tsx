@@ -1,13 +1,19 @@
 import { useRouter } from 'expo-router';
 import { Check } from 'lucide-react-native';
+import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { StepFrame } from '@/src/components/onboarding/StepFrame';
 import { nextStepHref } from '@/src/components/onboarding/steps';
 import { AppText, Button } from '@/src/components/ui';
+import { WallpaperPreview } from '@/src/components/wallpaper';
 import { S } from '@/src/constants/strings';
+import { useCanvasSize } from '@/src/hooks/useCanvasSize';
 import { useChrome } from '@/src/hooks/useChrome';
+import { useNow } from '@/src/hooks/useNow';
 import { THEME_ORDER, THEMES } from '@/src/themes';
 import { useAppStore } from '@/src/store';
+import type { WallpaperRenderOptions } from '@/src/types/wallpaper';
+import { safeZoneFor } from '@/src/utils/canvas';
 
 const T = S.onboarding.theme;
 
@@ -16,6 +22,21 @@ export default function ThemeStep() {
   const { c, accent, onAccent } = useChrome();
   const draft = useAppStore((s) => s.draft);
   const setTheme = useAppStore((s) => s.setTheme);
+  const now = useNow();
+  const canvas = useCanvasSize('device');
+  const [cellW, setCellW] = useState(150);
+  const nowIso = now.toISOString();
+  const options = useMemo<WallpaperRenderOptions>(
+    () => ({
+      now: nowIso,
+      showMotivation: true,
+      showCompleted: true,
+      showProgress: true,
+      orientation: 'portrait',
+      safeZone: safeZoneFor('portrait'),
+    }),
+    [nowIso],
+  );
 
   if (!draft) return null;
 
@@ -45,12 +66,13 @@ export default function ThemeStep() {
               onPress={() => setTheme(id)}
               style={styles.cell}
             >
-              <View style={[styles.preview, { borderColor: selected ? accent : c.border, borderWidth: selected ? 3 : 1 }]}>
-                {/* Temporary swatch (T2.4); replaced by a live <Wallpaper> in T4.5. */}
-                <View style={[styles.swatch, { backgroundColor: t.colors.background }]}>
-                  <View style={[styles.bar, { backgroundColor: t.colors.accent }]} />
-                  <View style={[styles.bar, styles.short, { backgroundColor: t.colors.accentAlt }]} />
-                </View>
+              <View
+                onLayout={(e) => setCellW(e.nativeEvent.layout.width)}
+                style={[styles.preview, { borderColor: selected ? accent : c.border, borderWidth: selected ? 3 : 1 }]}
+              >
+                {cellW > 0 ? (
+                  <WallpaperPreview countdown={draft} theme={id} size={canvas.layout} options={options} boxWidth={cellW - (selected ? 6 : 2)} />
+                ) : null}
                 {selected ? (
                   <View style={[styles.check, { backgroundColor: accent }]}>
                     <Check size={14} color={onAccent} strokeWidth={3} />
@@ -72,10 +94,7 @@ const styles = StyleSheet.create({
   flex: { flex: 1 },
   grid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 16 },
   cell: { width: '47%', gap: 8 },
-  preview: { aspectRatio: 9 / 19.5, borderRadius: 14, overflow: 'hidden' },
-  swatch: { flex: 1, justifyContent: 'center', padding: 12, gap: 8 },
-  bar: { height: 10, borderRadius: 5 },
-  short: { width: '60%' },
+  preview: { borderRadius: 14, overflow: 'hidden', alignItems: 'center' },
   check: { position: 'absolute', top: 8, right: 8, width: 24, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
   name: { textAlign: 'center' },
 });

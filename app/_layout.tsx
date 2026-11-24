@@ -23,7 +23,9 @@ export default function RootLayout() {
   return (
     <View style={{ flex: 1, backgroundColor: c.bg }}>
       <StatusBar style={scheme === 'dark' ? 'light' : 'dark'} />
-      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: c.bg } }} />
+      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: c.bg } }}>
+        <Stack.Screen name="ios-guide" options={{ presentation: 'modal' }} />
+      </Stack>
       <ToastHost />
     </View>
   );

@@ -1,7 +1,7 @@
 import { Redirect, useRouter } from 'expo-router';
 import { ChevronLeft } from 'lucide-react-native';
 import { useMemo, useState } from 'react';
-import { Linking, PixelRatio, Pressable, ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { Linking, PixelRatio, Platform, Pressable, ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ActionBar } from '@/src/components/studio/ActionBar';
 import { CaptureHost } from '@/src/components/studio/CaptureHost';
@@ -90,6 +90,7 @@ export default function Studio() {
     const res = await saveToGallery(uri);
     if (res.ok) {
       showToast({ message: S.studio.saved, tone: 'success' });
+      if (Platform.OS === 'ios') router.push('/ios-guide'); // ADR-002: guide right after saving
       return;
     }
     if (res.reason === 'denied') {
@@ -146,7 +147,12 @@ export default function Studio() {
         ) : null}
         <ThemeChips value={theme} onChange={setCountdownTheme} />
         <OptionToggles value={prefs} onChange={setPreferences} />
-        <ActionBar busy={busy} onSave={save} onShare={() => share()} />
+        <ActionBar
+          busy={busy}
+          onSave={save}
+          onShare={() => share()}
+          onHowTo={Platform.OS === 'ios' ? () => router.push('/ios-guide') : undefined}
+        />
       </ScrollView>
 
       {job ? (
