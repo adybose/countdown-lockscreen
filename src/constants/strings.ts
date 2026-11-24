@@ -100,6 +100,7 @@ export const S = {
       dayChoice: (n: number) => (n === 0 ? 'Same day' : n === 1 ? '1 day before' : `${n} days before`),
       finish: 'Finish',
       saving: 'Saving…',
+      commitFailed: 'Something is missing — check the earlier steps.',
     },
   },
 

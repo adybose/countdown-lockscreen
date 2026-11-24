@@ -148,7 +148,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     npx expo export --platform android
     ```
 
-- [ ] **T2.4 — Steps 4–6 (Milestones, Theme, Reminders) + commit flow** · `MUST-HAVE` · 11 min · deps: T2.3
+- [x] **T2.4 — Steps 4–6 (Milestones, Theme, Reminders) + commit flow** · `MUST-HAVE` · 11 min · deps: T2.3
   - `milestones.tsx` (DESIGN §9.5): add/edit/move ↑↓/delete, Auto-plan (confirm before replacing), out-of-order warning + Sort by date, max 12, per-row errors block Next.
   - `theme.tsx` (§9.6): 2×2 cards. Use a **temporary** solid-color swatch per theme until T4.5 swaps in the live `<Wallpaper>` mini preview.
   - `reminders.tsx` (§9.7): toggles, time, N-days segmented control. **Finish** → `commitDraft(now)` → `router.replace('/home')`. (The permission request is wired in T5.2.)
