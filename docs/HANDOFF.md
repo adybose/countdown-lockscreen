@@ -3,7 +3,7 @@
 Autonomous build of `docs/TASKS.md` Phases 1–8, run from `BUILD.md`. This doc is for you, the human tester: what was built, how to check it on a phone, and what still needs you.
 
 **TL;DR**
-- Every MUST-HAVE and SHOULD-HAVE task is done except one: the **EAS cloud build (T6.3) needs you to run `npx eas-cli init`** (one-time project link + keystore prompt). Copy-paste commands are in §3.
+- Every MUST-HAVE and SHOULD-HAVE task is done. The EAS project is linked (`@adybose/countdown-lockscreen`) and the first **Android preview APK is built**: [install page](https://expo.dev/accounts/adybose/projects/countdown-lockscreen/builds/02c6837b-37f3-4011-a65c-ea473941de66).
 - 249 Jest tests pass (also under `America/Los_Angeles` and `Asia/Kolkata`). `src/utils` line coverage is 99.7%. `tsc` and lint are clean. `npx expo export` succeeds for Android and web.
 - Both STRETCH tasks are done: web desktop PNG export (T7.1) and a feature-flagged, notify-only background refresh stub (T7.2).
 - Nothing has been run on a real phone yet. The checklist in §2 is the first device pass.
@@ -95,7 +95,7 @@ Tick these off in order. ✅ = expected result.
 
 | # | Task | Blocker | Status |
 |---|---|---|---|
-| 1 | T6.3 | EAS project isn't linked (`app.json` has no `extra.eas.projectId`), so `eas build --non-interactive` refuses to start. `eas init` creates a project on your Expo account and you have two accounts, so the build left that choice to you. The first build also needs an interactive "generate keystore" answer. You're already logged in (`npx eas-cli whoami` works). | OPEN |
+| 1 | T6.3 | EAS project isn't linked (`app.json` has no `extra.eas.projectId`), so `eas build --non-interactive` refuses to start. `eas init` creates a project on your Expo account and you have two accounts, so the build left that choice to you. The first build also needs an interactive "generate keystore" answer. You're already logged in (`npx eas-cli whoami` works). | RESOLVED 2026-11-24 (EAS generated the keystore in the cloud with no prompt; [build](https://expo.dev/accounts/adybose/projects/countdown-lockscreen/builds/02c6837b-37f3-4011-a65c-ea473941de66)) |
 
 **Resolve it (from the repo root):**
 

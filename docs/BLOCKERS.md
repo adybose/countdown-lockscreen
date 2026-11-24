@@ -6,7 +6,7 @@ Log anything the autonomous build can't do by itself (login, keystore prompt, mi
 
 | # | Task ID | Blocker Description | Exact Human Command | Status |
 |---|---|---|---|---|
-| 1 | T6.3 | The EAS Android preview build can't start: the project isn't linked to an Expo project yet (`app.json` has no `extra.eas.projectId`). `eas init` creates a project on your Expo account and you have two accounts to choose from, so a human must run it. The first build also needs an Android keystore, which EAS only generates interactively. | `npx eas-cli init` then `npx eas-cli build --platform android --profile preview` (answer **Yes** to "Generate a new Android Keystore?") | OPEN |
+| 1 | T6.3 | The EAS Android preview build can't start: the project isn't linked to an Expo project yet (`app.json` has no `extra.eas.projectId`). `eas init` creates a project on your Expo account and you have two accounts to choose from, so a human must run it. The first build also needs an Android keystore, which EAS only generates interactively. | `npx eas-cli init` then `npx eas-cli build --platform android --profile preview` (answer **Yes** to "Generate a new Android Keystore?") | RESOLVED 2026-11-24: linked to `@adybose`, keystore generated in the cloud, APK built ([build](https://expo.dev/accounts/adybose/projects/countdown-lockscreen/builds/02c6837b-37f3-4011-a65c-ea473941de66)) |
 
 ## Details
 
