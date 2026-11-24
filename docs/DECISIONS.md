@@ -93,6 +93,17 @@ Format: each ADR has Status · Context · Decision · Consequences. Add new ADRs
 
 ---
 
+## ADR-007: Landscape column widths and Jest module mapping
+
+- **Status:** Accepted
+- **Context:** DESIGN §4.2 lists a 42% left column, a 50% right column, 4% side padding on each side, and an 8% column gap. Those add up to 108% of the width, so they can't all hold. Separately, Jest can't load `lucide-react-native`'s `.mjs` ESM entry under the `jest-expo` transform setup, and `@testing-library/react-native` v14 makes `render()` async.
+- **Decision:** Keep the 4% side padding and the 42% left column, use a 4% gap, and give the right (path) column the rest (≈ 46%). In Jest, map `lucide-react-native` to its CommonJS build via `moduleNameMapper` (tests only; the app bundle is unchanged). Render tests `await render(...)`.
+- **Consequences:**
+  - ✅ The landscape layout fits exactly inside the canvas.
+  - ⚠️ The right column is ~4% narrower than the DESIGN table says.
+
+---
+
 <!-- Template for new ADRs
 ## ADR-00N: <title>
 - **Status:** Proposed | Accepted | Superseded by ADR-00M

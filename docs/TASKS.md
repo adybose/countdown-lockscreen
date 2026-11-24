@@ -186,7 +186,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
 
 ## Phase 4 — Wallpaper renderer, themes, Studio (50 min)
 
-- [ ] **T4.1 — Canvas utils, wallpaper model, `<Wallpaper>` frame + shared parts** · `MUST-HAVE` · 12 min · deps: T2.2
+- [x] **T4.1 — Canvas utils, wallpaper model, `<Wallpaper>` frame + shared parts** · `MUST-HAVE` · 12 min · deps: T2.2
   - `src/utils/canvas.ts` (`unitFor`, `resolveCanvasSize`, presets from DESIGN §8.3, `PORTRAIT_SAFE`/`LANDSCAPE_SAFE`).
   - `src/utils/wallpaperModel.ts` (`buildWallpaperModel`: hero variants, row selection, overflow, banner).
   - `src/components/wallpaper/{Wallpaper,WallpaperFrame,WallpaperPreview,SafeZoneOverlay}.tsx` + `parts/*`. The zones follow DESIGN §4 exactly (30/58/12). A neutral fallback path is used until themes land.
