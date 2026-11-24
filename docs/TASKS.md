@@ -321,7 +321,7 @@ Start only when every MUST-HAVE and SHOULD-HAVE task is `[x]` or `[!]`.
 
 ## Phase 8 — Polish, accessibility, README, HANDOFF (18 min)
 
-- [ ] **T8.1 — Accessibility + edge-state audit** · `MUST-HAVE` · 8 min · deps: T6.2
+- [x] **T8.1 — Accessibility + edge-state audit** · `MUST-HAVE` · 8 min · deps: T6.2
   - Every Pressable/Touchable has `accessibilityRole` + `accessibilityLabel`; hit areas ≥ 44 pt; checklist checkbox state; wallpaper preview summary label; `allowFontScaling={false}` only inside `<Wallpaper>`.
   - Verify the DESIGN §10 states exist in code (empty, error, permission-denied, today, overdue, completed). Fix gaps.
   - Acceptance:

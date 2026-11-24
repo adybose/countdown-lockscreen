@@ -21,7 +21,7 @@ export function IconPicker({
   return (
     <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
       <Pressable style={styles.backdrop} onPress={onClose} accessibilityRole="button" accessibilityLabel="Close">
-        <Pressable style={[styles.sheet, { backgroundColor: c.card }]} onPress={() => {}} accessibilityRole="none">
+        <View style={[styles.sheet, { backgroundColor: c.card }]} onStartShouldSetResponder={() => true}>
           <AppText variant="title">{title}</AppText>
           <View style={styles.grid}>
             {ICON_IDS.map((id) => {
@@ -44,7 +44,7 @@ export function IconPicker({
               );
             })}
           </View>
-        </Pressable>
+        </View>
       </Pressable>
     </Modal>
   );

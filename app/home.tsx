@@ -74,14 +74,14 @@ export default function Home() {
         <CountdownHero status={status} parts={parts} daysPast={daysPast(now, countdown)} />
 
         {status === 'overdue' ? (
-          <Banner tone="error" title={S.home.overdueCardTitle} message={S.wallpaper.overdueMotivation}>
+          <Banner tone="error" title={S.home.overdueCardTitle} message={S.home.overdueCardBody}>
             <Button label={S.home.markComplete} compact onPress={() => useAppStore.getState().markComplete(nowDate())} />
             <Button label={S.home.setNewDeadline} variant="secondary" compact onPress={() => router.push('/onboarding/deadline?mode=edit')} />
           </Banner>
         ) : null}
 
         {status === 'completed' && countdown.completedAt ? (
-          <Banner tone="info" icon={PartyPopper} title={S.home.completedTitle(formatShortDate(localDateOfInstant(countdown.completedAt)))} message="">
+          <Banner tone="info" icon={PartyPopper} title={S.home.completedTitle(formatShortDate(localDateOfInstant(countdown.completedAt)))} message={S.home.completedBody}>
             <Button label={S.home.startNew} compact onPress={startNew} />
           </Banner>
         ) : null}

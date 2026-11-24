@@ -125,6 +125,8 @@ export const S = {
     todayLeft: (h: number, m: number) => `${h}h ${m}m left`,
     overdueHero: (n: number) => (n === 0 ? 'Overdue' : `Overdue by ${n} day${n === 1 ? '' : 's'}`),
     overdueCardTitle: 'How did it go?',
+    overdueCardBody: 'Mark it complete, or set a new deadline and keep going.',
+    completedBody: 'Nice work. Start a new countdown whenever you are ready.',
     markComplete: 'Mark complete',
     setNewDeadline: 'Set new deadline',
     completedTitle: (date: string) => `Done! Finished ${date} 🎉`,

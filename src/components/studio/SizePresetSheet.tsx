@@ -27,7 +27,7 @@ export function SizePresetSheet({
   return (
     <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose}>
       <Pressable style={styles.backdrop} onPress={onClose} accessibilityRole="button" accessibilityLabel={S.common.cancel}>
-        <Pressable style={[styles.sheet, { backgroundColor: c.card }]} onPress={() => {}} accessibilityRole="none">
+        <View style={[styles.sheet, { backgroundColor: c.card }]} onStartShouldSetResponder={() => true}>
           <AppText variant="title" accessibilityRole="header">
             {S.studio.sizeSheetTitle}
           </AppText>
@@ -56,7 +56,7 @@ export function SizePresetSheet({
               </Pressable>
             );
           })}
-        </Pressable>
+        </View>
       </Pressable>
     </Modal>
   );

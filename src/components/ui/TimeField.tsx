@@ -60,7 +60,7 @@ export function TimeField({ label, value, onChange, compact }: TimeFieldProps) {
             accessibilityLabel={S.common.cancel}
             onPress={() => setIosOpen(false)}
           >
-            <Pressable style={[styles.sheet, { backgroundColor: c.card }]} onPress={() => {}} accessibilityRole="none">
+            <View style={[styles.sheet, { backgroundColor: c.card }]} onStartShouldSetResponder={() => true}>
               <AppText variant="title">{label}</AppText>
               <View style={styles.picker}>
                 <DateTimePicker
@@ -79,7 +79,7 @@ export function TimeField({ label, value, onChange, compact }: TimeFieldProps) {
                   setIosOpen(false);
                 }}
               />
-            </Pressable>
+            </View>
           </Pressable>
         </Modal>
       )}

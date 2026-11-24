@@ -69,7 +69,7 @@ export function DateField({ label, value, onChange, initial, minimumDate, maximu
             accessibilityLabel={S.common.cancel}
             onPress={() => setIosOpen(false)}
           >
-            <Pressable style={[styles.sheet, { backgroundColor: c.card }]} onPress={() => {}} accessibilityRole="none">
+            <View style={[styles.sheet, { backgroundColor: c.card }]} onStartShouldSetResponder={() => true}>
               <AppText variant="title">{label}</AppText>
               <View style={styles.picker}>
                 <DateTimePicker
@@ -90,7 +90,7 @@ export function DateField({ label, value, onChange, initial, minimumDate, maximu
                   setIosOpen(false);
                 }}
               />
-            </Pressable>
+            </View>
           </Pressable>
         </Modal>
       )}
