@@ -338,7 +338,7 @@ Start only when every MUST-HAVE and SHOULD-HAVE task is `[x]` or `[!]`.
     npm run test:tz && npx expo install --check && npx expo export --platform android
     ```
 
-- [ ] **T8.3 — README + HANDOFF** · `MUST-HAVE` · 6 min · deps: T8.2
+- [x] **T8.3 — README + HANDOFF** · `MUST-HAVE` · 6 min · deps: T8.2
   - Update `README.md` (features, screenshots placeholder, quick start, doc links).
   - Write `docs/HANDOFF.md` per `BUILD.md` §6: what was built; test/export status; a manual phone checklist (Expo Go, EAS APK install, Android lock-screen set, iOS save + guide, notification + tap-to-Studio, overdue check by setting a past deadline via import); a summary of `BLOCKERS.md` with copy-paste commands; ADRs added during the build; known limitations (OEM lock-screen overrides, Expo Go media limits).
   - Final commit: `docs(T8.3): add handoff`.

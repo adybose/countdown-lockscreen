@@ -1,0 +1,26 @@
+{
+  "schema": "countdown-lockscreen/plan",
+  "version": 1,
+  "exportedAt": "2026-11-24T10:00:00.000Z",
+  "app": { "name": "Countdown Lock Screen", "build": "1.0.0" },
+  "countdown": {
+    "id": "c_sample_overdue",
+    "title": "Submit grant application",
+    "emoji": "📝",
+    "deadlineDate": "2026-11-01",
+    "deadlineTime": null,
+    "motivation": "Fund the lab for another year.",
+    "startDate": "2026-10-01",
+    "themeId": "field-journal",
+    "completedAt": null,
+    "createdAt": "2026-10-01T09:00:00.000Z",
+    "updatedAt": "2026-10-01T09:00:00.000Z",
+    "milestones": [
+      { "id": "m_1", "title": "Draft research aims", "date": "2026-10-10", "done": true, "completedAt": "2026-10-09T18:00:00.000Z", "icon": "file-text", "order": 0 },
+      { "id": "m_2", "title": "Collect letters of support", "date": "2026-10-20", "done": false, "completedAt": null, "icon": "send", "order": 1 },
+      { "id": "m_3", "title": "Final budget review", "date": "2026-10-28", "done": false, "completedAt": null, "icon": "piggy-bank", "order": 2 }
+    ]
+  },
+  "reminders": { "dailyEnabled": true, "dailyTime": "08:00", "milestoneEnabled": true, "milestoneDaysBefore": 1 },
+  "preferences": { "showMotivation": true, "showCompleted": true, "showProgress": true, "showSafeZones": true, "sizePresetId": "device" }
+}
