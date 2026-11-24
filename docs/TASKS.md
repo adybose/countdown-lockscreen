@@ -330,7 +330,7 @@ Start only when every MUST-HAVE and SHOULD-HAVE task is `[x]` or `[!]`.
     ! grep -rnE "fetch\(|axios|XMLHttpRequest" src app
     ```
 
-- [ ] **T8.2 — Coverage + full verification sweep** · `SHOULD-HAVE` · 4 min · deps: T8.1
+- [x] **T8.2 — Coverage + full verification sweep** · `SHOULD-HAVE` · 4 min · deps: T8.1
   - Raise `src/utils` coverage to ≥ 80% lines (AC-N08) if needed.
   - Acceptance:
     ```bash
