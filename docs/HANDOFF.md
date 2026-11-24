@@ -4,7 +4,8 @@ Autonomous build of `docs/TASKS.md` Phases 1–8, run from `BUILD.md`. This doc 
 
 **TL;DR**
 - Every MUST-HAVE and SHOULD-HAVE task is done except one: the **EAS cloud build (T6.3) needs you to run `npx eas-cli init`** (one-time project link + keystore prompt). Copy-paste commands are in §3.
-- 246 Jest tests pass (also under `America/Los_Angeles` and `Asia/Kolkata`). `src/utils` line coverage is 99.7%. `tsc` and lint are clean. `npx expo export --platform android` succeeds.
+- 249 Jest tests pass (also under `America/Los_Angeles` and `Asia/Kolkata`). `src/utils` line coverage is 99.7%. `tsc` and lint are clean. `npx expo export` succeeds for Android and web.
+- Both STRETCH tasks are done: web desktop PNG export (T7.1) and a feature-flagged, notify-only background refresh stub (T7.2).
 - Nothing has been run on a real phone yet. The checklist in §2 is the first device pass.
 
 ## 1. What was built
@@ -39,7 +40,7 @@ Autonomous build of `docs/TASKS.md` Phases 1–8, run from `BUILD.md`. This doc 
 | Check | Result |
 |---|---|
 | `npx tsc --noEmit` | ✅ 0 errors |
-| `CI=1 npm test` | ✅ 246 tests, 19 suites |
+| `CI=1 npm test` | ✅ 249 tests, 20 suites |
 | `npm run test:tz` (LA + Kolkata) | ✅ |
 | `CI=1 npm test -- --coverage --collectCoverageFrom='src/utils/**/*.ts'` | ✅ 99.7% lines (target ≥ 80%) |
 | `npm run lint` | ✅ clean |
@@ -48,7 +49,7 @@ Autonomous build of `docs/TASKS.md` Phases 1–8, run from `BUILD.md`. This doc 
 | `npx expo prebuild --platform android --no-install` | ✅ (`android/` is git-ignored) |
 | Gradle compile of the Kotlin module | ⏭️ skipped: no Android SDK on the build machine (per T6.1, not a blocker). First real compile happens on EAS. |
 | EAS preview APK | ⛔ blocked (§3) |
-| `npx expo export --platform web` (stretch) | see §5 |
+| `npx expo export --platform web` (stretch) | ✅ static site in `dist/` |
 
 ## 2. Manual test checklist (your phone)
 
@@ -119,6 +120,7 @@ Local fallback (needs Android Studio + SDK + JDK 17 + a USB-debugging device): `
 | **ADR-005** | `validateMilestones` lets **done** milestones keep past dates, so editing an in-progress plan doesn't force you to move completed milestones into the future. Pending milestones still must be ≥ today. |
 | **ADR-006** | SDK 58's template moved routes to `src/app` and `@/*` → `./src/*`. We kept the documented root `app/` + `@/*` → `./*`, added `"types": ["jest", "node"]` (TypeScript 6 no longer auto-includes `@types`), disabled `typedRoutes`, set `web.output: static`, and dropped template-only packages. |
 | **ADR-007** | DESIGN §4.2's landscape percentages add up to 108%; we kept 4% sides + 42% left column, a 4% gap, and gave the path column the rest (~46%). Jest maps `lucide-react-native` to its CJS build; RNTL v14 `render()` is awaited. |
+| **ADR-008** | Web export uses `html-to-image` (MIT, web-only) instead of view-shot's `html2canvas-pro` path, for better inline-SVG fidelity. The Studio on web shows only **Download PNG**. |
 
 Other implementation notes (no spec deviation):
 - **expo-media-library SDK 58** replaced the old API (the legacy `saveToLibraryAsync` now throws). Saving uses `requestPermissionsAsync(true, ['photo'])` (write-only) + `Asset.create(uri)`.
@@ -128,7 +130,16 @@ Other implementation notes (no spec deviation):
 
 ## 5. Stretch (Phase 7)
 
-_Updated after the stretch tasks run; see the final commit._
+| Task | Status | Notes |
+|---|---|---|
+| T7.1 Web desktop PNG export | ✅ | `src/services/capture.web.ts` (html-to-image, ADR-008). Desktop presets **Laptop 16:10 (2560×1600)** and **MacBook Pro 14" (3024×1964)** appear only on web and use the two-column landscape layout. The Studio shows only **Download PNG**; the reminder UI is hidden on web. |
+| T7.2 Android background refresh | ✅ (stub) | `src/services/backgroundRefresh.ts` behind `FEATURE_BG_REFRESH = false`. No new dependency. The header documents the Android 14/15 limits and the enable steps. The pure `shouldPostRefreshReminder()` is unit-tested. |
+
+**Web manual check:**
+1. `npx expo export --platform web && npx serve dist` (or `npx expo start --web`).
+2. Finish onboarding → Studio → size chip → **Laptop 16:10** → **Download PNG**.
+   ✅ `countdown-desktop-16x10-2560x1600.png` downloads at exactly 2560×1600, uses the two-column layout, and has no safe-zone overlay.
+3. Check that the SVG backgrounds and custom fonts look right in Chrome and Safari. If a browser drops the fonts, that's a known html-to-image limitation; Chrome is the reference.
 
 ## 6. Known limitations
 
