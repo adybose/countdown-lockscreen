@@ -310,7 +310,7 @@ Start only when every MUST-HAVE and SHOULD-HAVE task is `[x]` or `[!]`.
     CI=1 npm test -- canvas
     ```
 
-- [ ] **T7.2 — Android background refresh hook (notify-only, feature-flagged)** · `STRETCH` · 3 min · deps: T5.2
+- [x] **T7.2 — Android background refresh hook (notify-only, feature-flagged)** · `STRETCH` · 3 min · deps: T5.2
   - `src/services/backgroundRefresh.ts` behind `FEATURE_BG_REFRESH = false`, per ARCHITECTURE §9.4. If `expo-background-task` isn't installed, write only the documented stub + notes (no new dependency unless the flag is turned on).
   - Acceptance:
     ```bash
