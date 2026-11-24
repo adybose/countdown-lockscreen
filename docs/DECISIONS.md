@@ -104,6 +104,18 @@ Format: each ADR has Status · Context · Decision · Consequences. Add new ADRs
 
 ---
 
+## ADR-008: `html-to-image` for web PNG export (stretch)
+
+- **Status:** Accepted
+- **Context:** On web, `react-native-view-shot` delegates to `html2canvas-pro`, an optional peer dependency that isn't installed. html2canvas also re-implements CSS layout and handles the inline `<svg>` that `react-native-svg` emits on web poorly, which is where all theme art lives. ARCHITECTURE §7 names `html-to-image` as the fallback.
+- **Decision:** Add `html-to-image` (MIT). `src/services/capture.web.ts` (Metro picks it only for web) calls `toPng(node, { width, height, canvasWidth: px.w, canvasHeight: px.h })` on the CaptureHost DOM node, and the Studio downloads the data URI via an `<a download>` link (`countdown-<preset>-<w>x<h>.png`). On web, the Studio shows only **Download PNG** (no Save / Set / Share), and the reminder UI is hidden.
+- **Consequences:**
+  - ✅ Desktop presets (2560×1600, 3024×1964) export at exact pixel sizes with the SVG backgrounds intact.
+  - ⚠️ One extra web-only dependency. It never loads on native.
+  - ⚠️ Fidelity depends on the browser's SVG `foreignObject` rendering. Verify manually in Chrome/Safari (HANDOFF §5).
+
+---
+
 <!-- Template for new ADRs
 ## ADR-00N: <title>
 - **Status:** Proposed | Accepted | Superseded by ADR-00M

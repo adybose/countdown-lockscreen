@@ -300,7 +300,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
 
 Start only when every MUST-HAVE and SHOULD-HAVE task is `[x]` or `[!]`.
 
-- [ ] **T7.1 — Expo Web desktop PNG export (2560×1600, 3024×1964)** · `STRETCH` · 9 min · deps: T4.4
+- [x] **T7.1 — Expo Web desktop PNG export (2560×1600, 3024×1964)** · `STRETCH` · 9 min · deps: T4.4
   - Install web deps if missing (`npx expo install react-dom react-native-web`).
   - Landscape layout in `WallpaperFrame` (DESIGN §4.2). Desktop presets shown only on `Platform.OS === 'web'`.
   - `src/services/capture.web.ts` per ARCHITECTURE §7 (record an ADR if you add `html-to-image`). The Download PNG button replaces Save/Set on web. Hide notifications UI on web.

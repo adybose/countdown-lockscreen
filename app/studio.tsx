@@ -18,6 +18,7 @@ import { useNow } from '@/src/hooks/useNow';
 import { useWallpaperCapture } from '@/src/hooks/useWallpaperCapture';
 import { nowDate } from '@/src/services/clock';
 import { confirmAsync } from '@/src/services/dialog';
+import { downloadUri } from '@/src/services/download';
 import { getLockscreenCapabilities, setLockScreenWallpaper } from '@/src/services/lockscreen';
 import { saveToGallery } from '@/src/services/media';
 import { sharePng } from '@/src/services/share';
@@ -130,6 +131,16 @@ export default function Studio() {
     showToast(saved.ok ? { message: S.studio.saved, tone: 'success' } : { message: S.studio.saveFailed, tone: 'error' });
   };
 
+  const download = async () => {
+    const uri = await render();
+    if (!uri) return;
+    if (downloadUri(uri, `countdown-${prefs.sizePresetId}-${canvas.px.w}x${canvas.px.h}.png`)) {
+      showToast({ message: S.studio.downloaded, tone: 'success' });
+    } else {
+      showToast({ message: S.studio.captureFailed, tone: 'error' });
+    }
+  };
+
   const lock =
     Platform.OS === 'android'
       ? {
@@ -184,6 +195,7 @@ export default function Studio() {
           onSave={save}
           onShare={() => share()}
           lock={lock}
+          onDownload={Platform.OS === 'web' ? download : undefined}
           onHowTo={Platform.OS === 'ios' ? () => router.push('/ios-guide') : undefined}
         />
       </ScrollView>

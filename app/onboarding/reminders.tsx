@@ -4,7 +4,7 @@ import { Platform, StyleSheet } from 'react-native';
 import { StepFrame } from '@/src/components/onboarding/StepFrame';
 import { NotificationsDeniedCard } from '@/src/components/settings/NotificationsDeniedCard';
 import { ReminderControls } from '@/src/components/settings/ReminderControls';
-import { Button, showToast } from '@/src/components/ui';
+import { AppText, Button, showToast } from '@/src/components/ui';
 import { S } from '@/src/constants/strings';
 import { nowDate } from '@/src/services/clock';
 import { ensurePermission } from '@/src/services/notifications';
@@ -47,7 +47,13 @@ export default function RemindersStep() {
       helper={T.helper}
       footer={<Button label={`${T.finish} ✓`} accessibilityLabel={T.finish} onPress={finish} loading={busy} style={styles.flex} />}
     >
-      <ReminderControls value={reminders} onChange={setReminders} />
+      {Platform.OS === 'web' ? (
+        <AppText variant="body" tone="secondary">
+          {S.settings.notAvailableWeb}
+        </AppText>
+      ) : (
+        <ReminderControls value={reminders} onChange={setReminders} />
+      )}
       {permission === 'denied' ? <NotificationsDeniedCard /> : null}
     </StepFrame>
   );

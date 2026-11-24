@@ -11,10 +11,19 @@ export interface ActionBarProps {
   lock?: { enabled: boolean; reason: string | null; onPress: () => void };
   /** iOS only (FR-22). */
   onHowTo?: () => void;
+  /** Web only (FR-33): replaces Save / Set / Share. */
+  onDownload?: () => void;
 }
 
-export function ActionBar({ busy, onSave, onShare, lock, onHowTo }: ActionBarProps) {
+export function ActionBar({ busy, onSave, onShare, lock, onHowTo, onDownload }: ActionBarProps) {
   const isIOS = Platform.OS === 'ios';
+  if (onDownload) {
+    return (
+      <View style={styles.wrap}>
+        <Button label={S.studio.download} icon={Download} onPress={onDownload} disabled={busy} />
+      </View>
+    );
+  }
   return (
     <View style={styles.wrap}>
       <View style={styles.row}>
