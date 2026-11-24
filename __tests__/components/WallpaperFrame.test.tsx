@@ -10,11 +10,11 @@ const c: Countdown = {
 };
 
 describe('<Wallpaper> frame', () => {
-  it('renders the neutral fallback with hero and finish', async () => {
+  it.each(['glass-terminal', 'pixel-quest'] as const)('renders %s with hero and rows', async (theme) => {
     const r = await render(
       <Wallpaper
         countdown={c}
-        theme="glass-terminal"
+        theme={theme}
         size={{ width: 360, height: 800 }}
         options={{ now: new Date(2027, 0, 17, 9).toISOString(), showMotivation: true, showCompleted: true, showProgress: true, orientation: 'portrait', safeZone: PORTRAIT_SAFE }}
       />,

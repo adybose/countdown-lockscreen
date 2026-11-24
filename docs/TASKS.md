@@ -197,7 +197,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     ! grep -rnE "Date\.now|new Date\(\)|Math\.random" src/components/wallpaper src/utils
     ```
 
-- [ ] **T4.2 — Themes: Glass Terminal + Pixel Quest** · `MUST-HAVE` · 11 min · deps: T4.1
+- [x] **T4.2 — Themes: Glass Terminal + Pixel Quest** · `MUST-HAVE` · 11 min · deps: T4.1
   - `src/components/wallpaper/themes/glass-terminal/*` (gradient + glow orbs + grid, circuit rail, glass cards, outlined icon squares) and `pixel-quest/*` (stepped bands, seeded stars, pixel hills, S-trail, octagon nodes, castle-flag finish, max 4 rows) per DESIGN §6.1–6.2, §8.2.
   - Acceptance:
     ```bash
