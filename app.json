@@ -50,7 +50,9 @@
           "photosPermission": "Allow Countdown Lock Screen to save wallpapers to your photos.",
           "savePhotosPermission": "Allow Countdown Lock Screen to save wallpapers to your photos.",
           "isAccessMediaLocationEnabled": false,
-        "granularPermissions": ["photo"]
+          "granularPermissions": [
+            "photo"
+          ]
         }
       ],
       "expo-sharing",
@@ -59,6 +61,12 @@
     "experiments": {
       "typedRoutes": false,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cdff92f0-e387-49da-9489-a429bdf01e28"
+      }
+    },
+    "owner": "adybose"
   }
 }
