@@ -260,7 +260,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
 
 ## Phase 6 — Android native module + EAS (21 min)
 
-- [ ] **T6.1 — `modules/lockscreen-wallpaper` Expo local module (Kotlin) + JS wrapper** · `MUST-HAVE` · 10 min · deps: T1.5
+- [x] **T6.1 — `modules/lockscreen-wallpaper` Expo local module (Kotlin) + JS wrapper** · `MUST-HAVE` · 10 min · deps: T1.5
   - Create the files listed in ARCHITECTURE §8.1. Prefer hand-writing them from the Expo local-module template structure. If you use `npx create-expo-module@latest --local`, it may prompt, so pass all names/flags non-interactively or fall back to hand-writing. Remove iOS/web native stubs; set `platforms: ["android"]`.
   - Kotlin per §8.2: `getCapabilities`, `setLockScreenWallpaperAsync(fileUri, options)` → `WallpaperManager.setBitmap(bitmap, null, allowBackup, FLAG_LOCK)`. Coded errors. `SET_WALLPAPER` permission in the module manifest.
   - `src/services/lockscreen.ts` per §8.3 (`requireOptionalNativeModule`, Expo Go detection).

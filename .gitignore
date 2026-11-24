@@ -8,8 +8,8 @@ web-build/
 credentials.json
 google-services.json
 .DS_Store
-android/
-ios/
+/android/
+/ios/
 .scaffold/
 coverage/
 expo-env.d.ts
