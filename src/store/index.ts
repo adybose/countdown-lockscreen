@@ -49,6 +49,8 @@ export interface Actions {
   setReminders(patch: Partial<ReminderSettings>): void;
   setPreferences(patch: Partial<WallpaperPreferences>): void;
   setTheme(id: ThemeId): void;
+  /** Studio: always targets the saved countdown, even if a stale draft exists. */
+  setCountdownTheme(id: ThemeId): void;
   setNotificationPermission(p: NotificationPermission): void;
   setNotificationsSynced(at: string): void;
   setLastRenderedAt(at: string): void;
@@ -305,6 +307,11 @@ export const useAppStore = create<Store>()(
         const { draft, countdown } = get();
         if (draft) set({ draft: { ...draft, themeId: id } });
         else if (countdown) set({ countdown: { ...countdown, themeId: id } });
+      },
+
+      setCountdownTheme(id) {
+        const { countdown } = get();
+        if (countdown) set({ countdown: { ...countdown, themeId: id } });
       },
 
       setNotificationPermission(p) {

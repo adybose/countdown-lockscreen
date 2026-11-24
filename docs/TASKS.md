@@ -213,7 +213,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     CI=1 npm test -- Wallpaper
     ```
 
-- [ ] **T4.4 — Lock Screen Studio: preview, toggles, overlay, capture, Save, Share** · `MUST-HAVE` · 12 min · deps: T4.2, T4.3, T3.1
+- [x] **T4.4 — Lock Screen Studio: preview, toggles, overlay, capture, Save, Share** · `MUST-HAVE` · 12 min · deps: T4.2, T4.3, T3.1
   - `app/studio.tsx` + `src/components/studio/*` per DESIGN §9.9: scaled preview at target aspect, theme chips, 4 toggles (persisted), size preset sheet (web-only presets hidden on native), safe-zone overlay **outside** the capture ref.
   - `src/hooks/useWallpaperCapture.ts` + `src/services/capture.ts` per ARCHITECTURE §7 (CaptureHost, frozen `now`, font guard, exact `width/height`).
   - `src/services/media.ts` (write-only permission, denied → toast + Open Settings + Share instead). Share via `sharePng`.
