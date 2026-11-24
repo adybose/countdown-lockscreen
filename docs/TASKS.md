@@ -246,7 +246,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     CI=1 npm test -- notificationPlan
     ```
 
-- [ ] **T5.2 — Notification service, permissions, sync, tap routing** · `MUST-HAVE` · 8 min · deps: T5.1, T4.4, T3.2
+- [x] **T5.2 — Notification service, permissions, sync, tap routing** · `MUST-HAVE` · 8 min · deps: T5.1, T4.4, T3.2
   - `src/services/notifications.ts` (`configureNotifications`, `ensurePermission`, `syncNotifications`) using the **installed** expo-notifications trigger types.
   - Root layout: `configureNotifications()`, `useNotificationSync()` (debounced), foreground once-per-day sync, `useLastNotificationResponse` → `router.push(data.url)`.
   - Wire the permission request into onboarding **Finish** and the Settings toggles. Show the denied card (DESIGN §10.3).

@@ -2,15 +2,17 @@ import Constants from 'expo-constants';
 import { useRouter } from 'expo-router';
 import { ChevronLeft, ChevronRight, CircleCheck, Download, TriangleAlert, Upload } from 'lucide-react-native';
 import { useState } from 'react';
-import { Linking, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { NotificationsDeniedCard } from '@/src/components/settings/NotificationsDeniedCard';
 import { ReminderControls } from '@/src/components/settings/ReminderControls';
 import { SectionTitle, SettingsRow } from '@/src/components/settings/SettingsRow';
-import { AppText, Banner, Button, IconButton, showToast } from '@/src/components/ui';
+import { AppText, Banner, IconButton, showToast } from '@/src/components/ui';
 import { S } from '@/src/constants/strings';
 import { useChrome } from '@/src/hooks/useChrome';
 import { nowDate } from '@/src/services/clock';
 import { confirmAsync } from '@/src/services/dialog';
+import { ensurePermission } from '@/src/services/notifications';
 import { pickImportFile, writeAndShareExport } from '@/src/services/planFile';
 import { useAppStore } from '@/src/store';
 import type { ReminderSettings } from '@/src/types/domain';
@@ -32,8 +34,12 @@ export default function Settings() {
   const [busy, setBusy] = useState<'export' | 'import' | null>(null);
   const isWeb = Platform.OS === 'web';
 
-  const onRemindersChange = (patch: Partial<ReminderSettings>) => {
+  const onRemindersChange = async (patch: Partial<ReminderSettings>) => {
+    // Store change → useNotificationSync → syncNotifications() (AC-26).
     useAppStore.getState().setReminders(patch);
+    if (patch.dailyEnabled === true || patch.milestoneEnabled === true) {
+      useAppStore.getState().setNotificationPermission(await ensurePermission());
+    }
   };
 
   const onExport = async () => {
@@ -122,11 +128,7 @@ export default function Settings() {
                 {T.permission}: {T.permissionValue[permission]}
               </AppText>
             </View>
-            {permission === 'denied' ? (
-              <Banner tone="warning" title={S.notifications.deniedTitle} message={S.notifications.deniedBody}>
-                <Button label={S.common.openSettings} variant="secondary" compact onPress={() => Linking.openSettings()} />
-              </Banner>
-            ) : null}
+            {permission === 'denied' ? <NotificationsDeniedCard /> : null}
           </>
         )}
 

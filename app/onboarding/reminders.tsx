@@ -1,11 +1,13 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { StepFrame } from '@/src/components/onboarding/StepFrame';
+import { NotificationsDeniedCard } from '@/src/components/settings/NotificationsDeniedCard';
 import { ReminderControls } from '@/src/components/settings/ReminderControls';
 import { Button, showToast } from '@/src/components/ui';
 import { S } from '@/src/constants/strings';
 import { nowDate } from '@/src/services/clock';
+import { ensurePermission } from '@/src/services/notifications';
 import { useAppStore } from '@/src/store';
 
 const T = S.onboarding.reminders;
@@ -15,6 +17,7 @@ export default function RemindersStep() {
   const draft = useAppStore((s) => s.draft);
   const reminders = useAppStore((s) => s.reminders);
   const setReminders = useAppStore((s) => s.setReminders);
+  const permission = useAppStore((s) => s.notifications.permission);
   const [busy, setBusy] = useState(false);
 
   if (!draft) return null;
@@ -22,6 +25,11 @@ export default function RemindersStep() {
   const finish = async () => {
     setBusy(true);
     try {
+      // Permission is requested here, not at launch (FR-09).
+      const r = useAppStore.getState().reminders;
+      if (Platform.OS !== 'web' && (r.dailyEnabled || r.milestoneEnabled)) {
+        useAppStore.getState().setNotificationPermission(await ensurePermission());
+      }
       const res = useAppStore.getState().commitDraft(nowDate());
       if (!res.ok) {
         showToast({ message: T.commitFailed, tone: 'error' });
@@ -40,6 +48,7 @@ export default function RemindersStep() {
       footer={<Button label={`${T.finish} ✓`} accessibilityLabel={T.finish} onPress={finish} loading={busy} style={styles.flex} />}
     >
       <ReminderControls value={reminders} onChange={setReminders} />
+      {permission === 'denied' ? <NotificationsDeniedCard /> : null}
     </StepFrame>
   );
 }
