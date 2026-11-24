@@ -283,7 +283,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     npx expo export --platform android
     ```
 
-- [ ] **T6.3 — `eas.json` + EAS Android preview build** · `MUST-HAVE` (config) / `SHOULD-HAVE` (cloud build) · 7 min · deps: T6.2
+- [!] Blocked (see BLOCKERS.md) **T6.3 — `eas.json` + EAS Android preview build** (config done; cloud build needs `eas init`) · `MUST-HAVE` (config) / `SHOULD-HAVE` (cloud build) · 7 min · deps: T6.2
   - `eas.json` per ARCHITECTURE §12. Install `expo-dev-client` via `npx expo install expo-dev-client` (for the `development` profile).
   - `npx eas-cli whoami`. If not logged in → **BLOCKER** (`npx eas-cli login && npx eas-cli init`), then mark `[!]` and continue.
   - If logged in: `npx eas-cli build --platform android --profile preview --non-interactive --no-wait`. If it fails on keystore generation → **BLOCKER** with `npx eas-cli build -p android --profile preview` (interactive, answer "Yes" to generate the keystore). Record the build URL in `docs/HANDOFF.md` notes.
