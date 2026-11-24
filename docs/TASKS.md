@@ -205,7 +205,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     CI=1 npm test
     ```
 
-- [ ] **T4.3 — Themes: Sticker Planner + Field Journal** · `MUST-HAVE` · 11 min · deps: T4.1
+- [x] **T4.3 — Themes: Sticker Planner + Field Journal** · `MUST-HAVE` · 11 min · deps: T4.1
   - `sticker-planner/*` (grid paper, confetti, rotated ribbon cards with notches, stitch line, sticker pills, **Mochi** mascot with 3 expressions) and `field-journal/*` (parchment vignette, speckles, contours, compass, Bézier road + pins + pine trees, checklist panel with tape) per DESIGN §6.3–6.4, §8.2.
   - Render smoke test `__tests__/components/Wallpaper.test.tsx`: 4 themes × {upcoming, today, overdue, completed} × {0, 3, 12 milestones} render without throwing and contain the hero text (AC-08 partial).
   - Acceptance:
