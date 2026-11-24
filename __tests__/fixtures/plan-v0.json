@@ -1,0 +1,14 @@
+{
+  "schema": "countdown-lockscreen/plan",
+  "countdown": {
+    "id": "c_old",
+    "title": "Land a summer internship",
+    "emoji": "💼",
+    "deadline": "2027-01-01T18:30:00",
+    "motivation": "Future me will thank me.",
+    "themeId": "pixel-quest",
+    "milestones": [
+      { "id": "m_1", "title": "Polish resume", "date": "2026-12-02", "done": false, "icon": "file-text", "order": 0 }
+    ]
+  }
+}

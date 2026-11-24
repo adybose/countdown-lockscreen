@@ -171,7 +171,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     test -f app/home.tsx && npx expo export --platform android
     ```
 
-- [ ] **T3.2 — Settings + JSON export/import + reset** · `MUST-HAVE` (export/import `SHOULD-HAVE`) · 12 min · deps: T3.1
+- [x] **T3.2 — Settings + JSON export/import + reset** · `MUST-HAVE` (export/import `SHOULD-HAVE`) · 12 min · deps: T3.1
   - `src/utils/planFile.ts` (`exportPlan`, `importPlan`, v0→v1 migration) per ARCHITECTURE §5.2.
   - `src/services/{planFile,share}.ts` (expo-file-system + expo-sharing + expo-document-picker).
   - `app/settings.tsx` per DESIGN §9.11: reminders section (UI only until T5.2), Export, Import (confirm + error card), Edit plan, Mark complete, Reset (confirm dialog → `resetCountdown()` → `router.replace('/onboarding/goal')`).

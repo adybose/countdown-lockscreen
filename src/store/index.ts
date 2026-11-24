@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { DEFAULT_PREFERENCES, DEFAULT_REMINDERS } from '@/src/constants/defaults';
 import { LIMITS } from '@/src/constants/limits';
 import { nowMs } from '@/src/services/clock';
 import { DEFAULT_THEME_ID } from '@/src/themes';
@@ -22,20 +23,7 @@ import { consumeLoadFailure, safeJSONStorage } from './storage';
 
 export const STORE_KEY = 'countdown-lockscreen:state';
 
-export const DEFAULT_REMINDERS: ReminderSettings = {
-  dailyEnabled: true,
-  dailyTime: '08:00',
-  milestoneEnabled: true,
-  milestoneDaysBefore: 1,
-};
-
-export const DEFAULT_PREFERENCES: WallpaperPreferences = {
-  showMotivation: true,
-  showCompleted: true,
-  showProgress: true,
-  showSafeZones: true,
-  sizePresetId: 'device',
-};
+export { DEFAULT_PREFERENCES, DEFAULT_REMINDERS };
 
 export type CommitResult = { ok: true; countdown: Countdown } | { ok: false; reason: 'no-draft' | 'invalid' };
 
