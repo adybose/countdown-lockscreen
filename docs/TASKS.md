@@ -274,7 +274,7 @@ Then mark `[x]`, commit `<type>(<TaskID>): <summary>`, and `git push origin main
     npx expo prebuild --platform android --no-install && test -d android   # android/ is git-ignored
     ```
 
-- [ ] **T6.2 — Studio "Set as Lock Screen" integration** · `MUST-HAVE` · 4 min · deps: T6.1, T4.4
+- [x] **T6.2 — Studio "Set as Lock Screen" integration** · `MUST-HAVE` · 4 min · deps: T6.1, T4.4
   - Android + available → button enabled: capture → `setLockScreenWallpaper(uri)` → toast "Lock screen updated ✓". Failure → alert + offer Save.
   - Android + unavailable → button disabled with an explanation (reason-specific copy). iOS/web → hidden.
   - Acceptance:

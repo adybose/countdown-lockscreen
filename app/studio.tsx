@@ -17,6 +17,8 @@ import { useChrome } from '@/src/hooks/useChrome';
 import { useNow } from '@/src/hooks/useNow';
 import { useWallpaperCapture } from '@/src/hooks/useWallpaperCapture';
 import { nowDate } from '@/src/services/clock';
+import { confirmAsync } from '@/src/services/dialog';
+import { getLockscreenCapabilities, setLockScreenWallpaper } from '@/src/services/lockscreen';
 import { saveToGallery } from '@/src/services/media';
 import { sharePng } from '@/src/services/share';
 import { useAppStore } from '@/src/store';
@@ -38,6 +40,8 @@ export default function Studio() {
   const canvas = useCanvasSize(prefs.sizePresetId);
   const { job, hostRef, onHostLayout, capture, busy } = useWallpaperCapture(canvas.px, canvas.layout);
   const [sheet, setSheet] = useState(false);
+  // Feature-detected once: Android + native module present (FR-21, NFR-10).
+  const lockCaps = useMemo(() => getLockscreenCapabilities(), []);
 
   const nowIso = now.toISOString();
   const options = useMemo<WallpaperRenderOptions>(
@@ -107,6 +111,34 @@ export default function Studio() {
     showToast({ message: S.studio.saveFailed, tone: 'error', actions: [{ label: S.studio.share, onPress: () => share(uri) }] });
   };
 
+  const setLock = async () => {
+    const uri = await render();
+    if (!uri) return;
+    const res = await setLockScreenWallpaper(uri);
+    if (res.ok) {
+      showToast({ message: S.studio.lockUpdated, tone: 'success' });
+      return;
+    }
+    const saveCopy = await confirmAsync({
+      title: S.studio.setFailedTitle,
+      message: `${res.message}\n\n${S.studio.setFailedSave}`,
+      confirmLabel: S.common.save,
+      cancelLabel: S.common.cancel,
+    });
+    if (!saveCopy) return;
+    const saved = await saveToGallery(uri);
+    showToast(saved.ok ? { message: S.studio.saved, tone: 'success' } : { message: S.studio.saveFailed, tone: 'error' });
+  };
+
+  const lock =
+    Platform.OS === 'android'
+      ? {
+          enabled: lockCaps.available && lockCaps.reason === 'ok',
+          reason: lockCaps.reason === 'ok' || lockCaps.reason === 'not-android' ? null : S.studio.lockUnavailable[lockCaps.reason],
+          onPress: setLock,
+        }
+      : undefined;
+
   return (
     <SafeAreaView style={[styles.flex, { backgroundColor: c.bg }]}>
       <View style={styles.header}>
@@ -151,6 +183,7 @@ export default function Studio() {
           busy={busy}
           onSave={save}
           onShare={() => share()}
+          lock={lock}
           onHowTo={Platform.OS === 'ios' ? () => router.push('/ios-guide') : undefined}
         />
       </ScrollView>
